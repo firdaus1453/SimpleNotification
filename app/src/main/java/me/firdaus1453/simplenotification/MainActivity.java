@@ -31,12 +31,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void sendNotification(View view) {
         // Mensetting notficationmanager
+
+        String notificationTitle = edtTitle.getText().toString();
+        String notificationText = edtContent.getText().toString();
+
         NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_alert)
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_alert))
-                .setContentTitle(edtTitle.getText().toString())
-                .setContentText(edtContent.getText().toString())
+                .setContentTitle(notificationTitle)
+                .setContentText(notificationText)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(notificationTitle))
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(notificationText))
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setSubText("ini sub text")
                 .setAutoCancel(true);
